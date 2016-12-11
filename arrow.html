@@ -28,10 +28,31 @@
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        var dx = mouse.x - arrow.x,
+                var dx = 0;
+        var dy = 0;
+        var add = 0;
+        var rot = 0;
+        if (mouse.x = arrow.x) {
+          rot = Math.PI / 2;
+        } 
+        else if (mouse.x > arrow.x) {
+          dx = mouse.x - arrow.x;
           dy = mouse.y - arrow.y;
+          rot = Math.atan(dy / dx); 
+        } 
+        else if (mouse.x < arrow.x) {
+          dx = mouse.y - arrow.y;
+          dy = arrow.x - mouse.x;
+          add = Math.PI / 2;
+          //if(mouse.y > arrow.y){ 
+          //   }  
+          //else{ 
+          //  add= Math.PI;
+          // }
+          rot = Math.atan(dy / dx); 
+        }
+        arrow.rotation = rot;
 
-        arrow.rotation = Math.atan(dy / dx); //radians
         arrow.draw(context);
       }());
 
