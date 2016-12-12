@@ -34,7 +34,7 @@
 
           dx = mouse.x - arrow.x;
           dy = mouse.y - arrow.y;
-        if (mouse.x < arrow.x)
+        if (dx < 0)
         {add = Math.PI ;}
 
         arrow.rotation = add + Math.atan(dy / dx);
