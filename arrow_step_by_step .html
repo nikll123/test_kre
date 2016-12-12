@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Rotate to Mouse</title>
+  <title>arrow step by step</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,43 +17,45 @@
     window.onload = function() {
       //Our code here...
       var canvas = document.getElementById('canvas'),
-          context = canvas.getContext('2d')
+          context = canvas.getContext('2d');
           
 
+with (context) {
   //context.save();
-  context.translate(200, 200);
-  context.lineWidth = 5;
-  context.strokeStyle = "#0000ff";
+  translate(200, 200);
+  lineWidth = 5;
+  strokeStyle = "#0000ff";
   //context.rotate(rotation);
   
-  context.beginPath();
-  context.moveTo(-50, -25);
-  context.lineTo(0, -25);
-  context.stroke();
+  beginPath();
+  moveTo(-50, -25);
+  lineTo(0, -25);
+  stroke();
 
-  context.lineTo(0, -50);
-  context.stroke();
+  lineTo(0, -50);
+  stroke();
 
-  context.lineTo(50, 0);
-  context.stroke();
+  lineTo(50, 0);
+  stroke();
 
-  context.lineTo(0, 50);
-  context.stroke();
+  lineTo(0, 50);
+  stroke();
 
-  context.lineTo(0, 25);
-  context.stroke();
+  lineTo(0, 25);
+  stroke();
 
-  context.lineTo(-50, 25);
-  context.stroke();
+  lineTo(-50, 25);
+  stroke();
 
-  context.closePath();
-  context.stroke();
+  closePath();
+  stroke();
 
 //  context.closePath();
   //context.fillStyle = "#ffff00";
   //context.fill();
 //  context.stroke();
   //context.restore();
+  }
       }();
 
   </script>
