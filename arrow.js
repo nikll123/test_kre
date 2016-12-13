@@ -36,13 +36,13 @@ Arrow.prototype.drawstep = function(context, step)
   {
     context.translate(-this.x, -this.y);
     context.clearRect(0, 0, canvas.width, canvas.height);
+    context.translate(this.x, this.y);
   }
   else
   {
     switch (step)
     {
       case 1:
-        context.translate(this.x, this.y);
         context.lineWidth = 2;
         context.fillStyle = this.color;
         context.beginPath();
@@ -65,10 +65,9 @@ Arrow.prototype.drawstep = function(context, step)
         context.lineTo(-50, 25);
         break
       case 7:
-        context.lineTo(-50, -25);
+        context.closePath();
         break
       case 8:
-        context.closePath();
         context.fill();
         break
     }
