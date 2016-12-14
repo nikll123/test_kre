@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Rotate to Mouse</title>
+  <title>arrow_step_by_step_slow</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,35 +11,34 @@
   <canvas id="canvas" width="400" height="400">
        </canvas>
 
-  <script src="utils.js"></script>
   <script src="arrow.js"></script>
   <script>
     window.onload = function() {
       //Our code here...
       var canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d'),
-        mouse = utils.captureMouse(canvas),
+        // mouse = utils.captureMouse(canvas),
         arrow = new Arrow();
 
       arrow.x = canvas.width / 2;
       arrow.y = canvas.height / 2;
+      context.translate(arrow.x, arrow.y);
+
+      var fps = 2,
+          step = 0;
 
       (function drawFrame() {
-        window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        setTimeout(function() {
+          window.requestAnimationFrame(drawFrame, canvas);
+          
+  
+          arrow.drawstep(context, step);
+          step = step + 1;
+          
+          if (step > 8)
+            { step = 0; }
 
-        var dx = 0,
-            dy = 0,
-            add = 0;
-
-          dx = mouse.x - arrow.x;
-          dy = mouse.y - arrow.y;
-        if (dx < 0)
-        {add = Math.PI ;}
-
-        arrow.rotation = add + Math.atan(dy / dx);
-
-        arrow.draw(context);
+        }, 1000 / fps);
       }());
 
     };
