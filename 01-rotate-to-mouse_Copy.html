@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title>Rotate to Mouse</title>
+       <link rel = "stylesheet"
+             href = "style.css">
+    </head>
+    <body id = 'body'>
+        <canvas id = "canvas"
+                width = "400"
+                height = "400">
+        </canvas>
+                    
+        <script src="utils.js"></script>
+        <script src="arrow.js"></script>
+        <script>
+        window.onload = function () {
+         //Our code here...
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+
+                mouse = utils.captureMouse(canvas),
+                arrow = new Arrow();
+                
+            arrow.x = canvas.width / 2; 
+            arrow.y = canvas.height / 2;
+         
+            (function drawFrame () {
+                window.requestAnimationFrame(drawFrame, canvas);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                
+                var dx = mouse.x - arrow.x,
+                    dy = mouse.y - arrow.y,
+                    ratio = dy/dx;
+
+                if   ( ( ( ratio < 0 ) && ( dx < 0 ) )                 // если курсор в Квадранте «С» 
+                                                                       // (по Рисунку 3.13 из Книги )
+                    || ( ( ratio > 0 ) && ( dy < 0 ) ) )               // или в Квадранте «D», то 
+
+                     { arrow.rotation = Math.atan(ratio) + Math.PI }   // добавить 180 градусов 
+                                                                       // к математической формуле
+
+                else  arrow.rotation = Math.atan(ratio);  // иначе - рассчитывать положение 
+                                                          // стандартной мат. формулой
+
+                console.log( "x: " + mouse.x + ", y: " + mouse.y + " dx: " + dx + ", dy: " + dy + ", ratio: " + ratio );
+
+
+              //  arrow.rotation = Math.atan(ratio); //radians
+                arrow.draw(context);
+                
+                context.lineWidth = 1;
+                context.strokeStyle = "#cccccc";
+                context.moveTo(0, 0);
+                context.lineTo(canvas.width, canvas.height);
+                context.stroke();
+                context.closePath();
+                
+            }());
+        };
+       </script>
+    </body>
+</html>
+
+ 
