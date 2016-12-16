@@ -24,8 +24,13 @@
 
       for (i = -200; i<=200; i = i + 10)
       {
-        point = new Point(i, i, i);
+        point = new Point(i, 0, 0);
         point.draw(context);
+        point = new Point(0, i, 0);
+        point.draw(context);
+        point = new Point(0, 0, i);
+        point.draw(context);
+        
       }
 
     }

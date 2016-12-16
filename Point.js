@@ -1,34 +1,38 @@
 function Point(x, y, z)
 {
-var minX = -200,
-    maxX = 200,
-    minY = -200,
-    maxY = 200,
-    minZ = -200,
-    maxZ = 200;
-/*
-  function checkval (val, min, max) {
-    if ((x < min) || (x >  max)) {
-      throw new Error("Worng value " + val);
-    }
-  };
-  checkval (x, minX, maxX);
-  checkval (y, minY, maxY);
-  checkval (z, minZ, maxZ);
-*/  
-
   this.x = x;
   this.y = y;
   this.z = z;
 }
 
+  function get2d(val, z, sign)
+  {
+    var res2d = val;
+    if (z != 0)
+    {
+      res2d  = res2d + sign * z * Math.SQRT2/2;
+    }
+    return res2d;
+  }
+
 Point.prototype.draw = function(context)
 {
 context.beginPath();
-context.moveTo(this.x,this.y);
-context.lineTo(this.x + 1,this.y + 1);
+context.moveTo(this.x2d(),this.y2d());
+context.lineTo(this.x2d() + 1,this.y2d() + 1);
 context.stroke();
 
 //console.log( "x = " + this.x + "; y = " + this.y + "; z = " + this.z);
 
 }
+
+Point.prototype.x2d = function()
+{
+  return get2d(this.x, this.z, -1);
+}
+
+Point.prototype.y2d = function()
+{
+  return get2d(this.y, this.z, 1);
+}
+
