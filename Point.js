@@ -6,7 +6,7 @@ var minX = -200,
     maxY = 200,
     minZ = -200,
     maxZ = 200;
-
+/*
   function checkval (val, min, max) {
     if ((x < min) || (x >  max)) {
       throw new Error("Worng value " + val);
@@ -15,6 +15,8 @@ var minX = -200,
   checkval (x, minX, maxX);
   checkval (y, minY, maxY);
   checkval (z, minZ, maxZ);
+*/  
+
   this.x = x;
   this.y = y;
   this.z = z;
