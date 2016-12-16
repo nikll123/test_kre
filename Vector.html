@@ -22,15 +22,13 @@
         y0 = canvas.height / 2;
           
       context.translate(x0, y0);
-      var lenght = 5;
-
-      for (i = -200; i<=200 - lenght; i = i + 10)
-      {
-        verbeg = new Point(i, i, i);
-        verend = new Point(i + lenght, i + lenght, i + lenght);
-        vector = new Vector (verbeg, verend);
+      
+        vector = new Vector (new Point(-200, 0, 0), new Point(200, 0, 0));
         vector.draw(context);
-      }
+        vector = new Vector (new Point(0, -200, 0), new Point(0, 200, 0));
+        vector.draw(context);
+        vector = new Vector (new Point(0, 0, -200), new Point(0, 0, 200));
+        vector.draw(context);
 
     }
   </script>
