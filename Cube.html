@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Vector</title>
+  <title>Cube</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,6 +13,7 @@
 
   <script src="Point.js"></script>
   <script src="Vector.js"></script>
+  <script src="Cube.js"></script>
   
   <script>
     window.onload = function() {
@@ -23,6 +24,13 @@
           
       context.translate(x0, y0);
       coordgrids(context);
+      var l = 100,
+          color = "#000000";
+      p = new Point (0, 0, 0);
+       
+      cube = new Cube(p, l);
+      cube.draw(context);      
+
     }
   </script>
 </body>

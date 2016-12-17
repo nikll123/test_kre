@@ -10,7 +10,7 @@ function Point(x, y, z)
     var res2d = val;
     if (z != 0)
     {
-      res2d  = res2d + sign * z * Math.SQRT2/2;
+      res2d  = res2d + sign * z * Math.cos(Math.PI/4) * 0.6;
     }
     return res2d;
   }
