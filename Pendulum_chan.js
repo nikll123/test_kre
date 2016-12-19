@@ -13,7 +13,7 @@ function Pendulum(point, lenght, weight)
 Pendulum.prototype.draw = function(context, phase)
 {
  
-  this.angle = Math.PI / 10 * Math.sin((2 * Math.PI / 360) * phase);
+  this.angle = Math.PI / 5 * Math.sin((2 * Math.PI / 360) * phase);
 
   var x1 = this.pointFixed.x + this.lenght * Math.sin(this.angle),
       y1 = this.pointFixed.y + this.lenght * Math.cos(this.angle); 
