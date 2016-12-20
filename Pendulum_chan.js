@@ -1,4 +1,4 @@
-function Pendulum(point, lenght, weight)
+function Pendulum(point, lenght, plummetSize)
 {
   this.pointFixed = new Point(point.x, point.y, 0);
 //  this.x = point.x;
@@ -6,7 +6,7 @@ function Pendulum(point, lenght, weight)
   this.angle = 0;
   this.color = "#000000";
   this.lenght = lenght;
-  this.weight = weight;
+  this.plummetSize = plummetSize;
     
 }
 
@@ -19,9 +19,17 @@ Pendulum.prototype.draw = function(context, phase)
       y1 = this.pointFixed.y + this.lenght * Math.cos(this.angle); 
   pointMoveable = new Point(x1, y1, 0);
   vector = new Vector (this.pointFixed, pointMoveable);
-  circledraw(context, pointMoveable, this.weight);
+  
+  //circledraw(context, pointMoveable, this.plummetSize);
+  
   vector.color = this.color;
   vector.draw(context);
+
+  pointMoveable.y = pointMoveable.y +  this.plummetSize/2;
+  cube = new Cube (pointMoveable, this.plummetSize);
+  cube.draw(context);
+  
+  //console.log (pointMoveable.x, pointMoveable.y);
 };
 
 function circledraw(context, point, radius) 

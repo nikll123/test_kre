@@ -12,6 +12,7 @@
 
   <script src="Point.js"></script>
   <script src="Vector.js"></script>
+  <script src="Cube.js"></script>
   <script src="Pendulum_chan.js"></script>
   
   <script>
@@ -25,7 +26,7 @@
       context.translate(x0, y0);
 
       p = new Point (0, -200, 0);
-      pendulum = new Pendulum(p, 300, 20);
+      pendulum = new Pendulum(p, 300, 30);
       var i = 1;
 
       (function drawFrame() {
