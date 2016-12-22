@@ -24,9 +24,15 @@
         x0 = canvas.width / 2,
         y0 = canvas.height / 2;
       context.translate(x0, y0);
+      
+      // Установка первоначальной длины маятника
+      var lenghtPendulum = document.getElementById("lenghtPendulum");
+      var lenghtPendulumValue = lenghtPendulum.value;
+      console.log('Первоначально установленная длина маятника: ' + lenghtPendulumValue);
+
 
       p = new Point (0, -200, 0);
-      pendulum = new Pendulum(p, 300, 30);
+      pendulum = new Pendulum(p, lenghtPendulumValue, 30);
       var i = 1;
 
       (function drawFrame() {
@@ -39,8 +45,28 @@
           {i = i - 360}
       }());
 
+
+      
+      // Установка события на изменение длины маятника
+      function selectLengPendulum()
+      {
+        pendulum.lenght = lenghtPendulum.value;
+        console.log('Изменённая длина маятника: ' + lenghtPendulum.value);
+      }
+      lenghtPendulum.addEventListener('change', selectLengPendulum, false );
+
     }
   </script>
+
+  <form>
+    <label for="lenghtPendulum" > Выберите длину маятника: </label>
+    <select id="lenghtPendulum" >
+      <option value="100">100px</option>
+      <option value="200"  selected="selected">200px</option>
+      <option value="300">300px</option>
+    </select>
+  </form>
+
 </body>
 
 </html>
