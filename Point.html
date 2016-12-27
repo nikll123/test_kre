@@ -12,26 +12,60 @@
        </canvas>
 
   <script src="Point.js"></script>
+  <script src="Dot.js"></script>
   <script>
+  
+       function dotdraw(context, x, y, z, radius) { 
+        center = new Point(x, y, z);
+        dot = new Dot(center, radius);
+        dot.draw(context);
+        }
+        
     window.onload = function() {
       //Our code here...
       var canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
         x0 = canvas.width / 2,
-        y0 = canvas.height / 2;
+        y0 = canvas.height / 2,
+        radius = 1,
+        step = 5;
           
       context.translate(x0, y0);
 
       for (i = -200; i<=200; i = i + 10)
       {
-        point = new Point(i, 0, 0);
-        point.draw(context);
-        point = new Point(0, i, 0);
-        point.draw(context);
-        point = new Point(0, 0, i);
-        point.draw(context);
-        
+        dotdraw(context, i, 0, 0, radius);
+        dotdraw(context, 0, i, 0, radius);
+        dotdraw(context, 0, 0, i, radius);
       }
+      
+      radius = 2;
+      
+      p = new Point(100, -50, 50);
+      for (a = 0; a<=360; a = a + step)
+      {
+        p.rotate(step, 0, 0);
+        dot = new Dot(p, radius);
+        dot.draw(context);
+      }
+
+      p = new Point(0, 60, 60);
+      for (a = 0; a<=360; a = a + step)
+      {
+        p.rotate(0, step, 0);
+        dot = new Dot(p, radius);
+        dot.draw(context);
+      }
+
+      p = new Point(80, 80, 0);
+      for (a = 0; a<=360; a = a + step)
+      {
+        p.rotate(0, 0, step);
+        dot = new Dot(p, radius);
+        dot.draw(context);
+      }
+
+
 
     }
   </script>

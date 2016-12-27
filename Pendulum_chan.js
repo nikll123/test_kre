@@ -32,11 +32,3 @@ Pendulum.prototype.draw = function(context, phase)
   //console.log (pointMoveable.x, pointMoveable.y);
 };
 
-function circledraw(context, point, radius) 
-{
-  var circle = new Path2D();
-      circle.moveTo(point.x, point.y);
-  circle.arc(point.x, point.y, radius, 0, 2 * Math.PI);
-  context.fill(circle);
-}
-
