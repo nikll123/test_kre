@@ -18,13 +18,6 @@
   <script>
     window.onload = function() {
     
-    function angleincrement (a, inc) {
-        a = a + inc;
-        if (a > 360)
-          {a = a - 360}
-        return a;
-    } 
-    
       var canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
         x0 = canvas.width / 2,
@@ -33,40 +26,35 @@
       context.translate(x0, y0);
 //      coordgrids(context);
       var l = 0,
-          color = "#000000",
-          ax = 0,
-          ay = 0,
-          az = 0;
+          ax=1,
+          ay=2,
+          az=3;
+      cubeBig = new Cube(new Point (0, 0, 0), 50);
+          
+      cubeX = new Cube(new Point (150, 0, 0), 20);
+      cubeX.color = "#FF0000";
+      
+      cubeY = new Cube(new Point (0, 150, 0), 20);
+      cubeY.color = "#00FF00";
 
+      cubeZ = new Cube(new Point (0, 0, 150), 20);
+      cubeZ.color = "#0000FF";
+      
       (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(-x0, -y0, canvas.width, canvas.height);
+          
+      this.cubeBig.rotate(ax, ay, az);
+      this.cubeBig.draw(context);      
 
-      l = 50;
-      ax=angleincrement ( ax, 1);
-      ay=angleincrement ( ay, 2);
-      az=angleincrement ( az, 3);
+      this.cubeX.rotate(ax, 0, 0);
+      this.cubeX.draw(context);      
 
-      p = new Point (0, 0, 0);
-      cube = new Cube(p, l);
-      cube.rotate(ax, ay, az)
-      cube.draw(context);      
+      this.cubeY.rotate(0, ay, 0);
+      this.cubeY.draw(context);      
 
-      l = 20;
-      p = new Point (150, 0, 0);
-      cube = new Cube(p, l);
-      cube.rotate(ax, 0, 0)
-      cube.draw(context);      
-
-      p = new Point (0, 150, 0);
-      cube = new Cube(p, l);
-      cube.rotate(0, ay, 0)
-      cube.draw(context);      
-
-      p = new Point (0, 0, 150);
-      cube = new Cube(p, l);
-      cube.rotate(0, 0, az)
-      cube.draw(context);      
+      this.cubeZ.rotate(0, 0, az);
+      this.cubeZ.draw(context);      
 
       }());
 
