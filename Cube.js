@@ -4,88 +4,96 @@ function Cube(point, edge)
   this.y = point.y;
   this.z = point.z;
   this.color = "#000000";
-  this.rotationx = 0;
-  this.rotationy = 0;
-  this.rotationz = 0;
   this.sidelenght = edge;
-    
-}
-
-Cube.prototype.draw = function(context)
-{
 
 var edgehalf = this.sidelenght / 2,  
     x1 = this.x - edgehalf,  
     y1 = this.y - edgehalf,  
     z1 = this.z + edgehalf,   
     z2 = this.z - edgehalf;
-pointA1 = new Point(x1, y1, z1);
-pointA2 = new Point(x1, y1, z2);
+this.pointA1 = new Point(x1, y1, z1);
+this.pointA2 = new Point(x1, y1, z2);
 
 var x1 = this.x + edgehalf,  
-    y1 = this.y - edgehalf,  
-pointB1 = new Point(x1, y1, z1);
-pointB2 = new Point(x1, y1, z2);
+    y1 = this.y - edgehalf;  
+this.pointB1 = new Point(x1, y1, z1);
+this.pointB2 = new Point(x1, y1, z2);
 
 var x1 = this.x + edgehalf,  
-    y1 = this.y + edgehalf,  
-pointC1 = new Point(x1, y1, z1);
-pointC2 = new Point(x1, y1, z2);
+    y1 = this.y + edgehalf;  
+this.pointC1 = new Point(x1, y1, z1);
+this.pointC2 = new Point(x1, y1, z2);
 
 var x1 = this.x - edgehalf,  
-    y1 = this.y + edgehalf,  
-pointD1 = new Point(x1, y1, z1);
-pointD2 = new Point(x1, y1, z2);
+    y1 = this.y + edgehalf;  
+this.pointD1 = new Point(x1, y1, z1);
+this.pointD2 = new Point(x1, y1, z2);
+    
+}
+
+Cube.prototype.rotate = function(ax, ay, az)
+{
+this.pointA1.rotate(ax, ay, az);
+this.pointA2.rotate(ax, ay, az);
+this.pointB1.rotate(ax, ay, az);
+this.pointB2.rotate(ax, ay, az);
+this.pointC1.rotate(ax, ay, az);
+this.pointC2.rotate(ax, ay, az);
+this.pointD1.rotate(ax, ay, az);
+this.pointD2.rotate(ax, ay, az);
+
+}
+
+Cube.prototype.draw = function(context)
+{
   
-vector = new Vector (pointA1, pointB1);
+vector = new Vector (this.pointA1, this.pointB1);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointB1, pointC1);
+vector = new Vector (this.pointB1, this.pointC1);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointC1, pointD1);
+vector = new Vector (this.pointC1, this.pointD1);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointD1, pointA1);
+vector = new Vector (this.pointD1, this.pointA1);
 vector.color = this.color;
 vector.draw(context);
 
-
-
-vector = new Vector (pointA2, pointB2);
+//----------------------------------------------
+vector = new Vector (this.pointA2, this.pointB2);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointB2, pointC2);
+vector = new Vector (this.pointB2, this.pointC2);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointC2, pointD2);
+vector = new Vector (this.pointC2, this.pointD2);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointD2, pointA2);
+vector = new Vector (this.pointD2, this.pointA2);
 vector.color = this.color;
 vector.draw(context);
 
-
-
-vector = new Vector (pointA1, pointA2);
+//----------------------------------------------
+vector = new Vector (this.pointA1, this.pointA2);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointB1, pointB2);
+vector = new Vector (this.pointB1, this.pointB2);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointC1, pointC2);
+vector = new Vector (this.pointC1, this.pointC2);
 vector.color = this.color;
 vector.draw(context);
 
-vector = new Vector (pointD1, pointD2);
+vector = new Vector (this.pointD1, this.pointD2);
 vector.color = this.color;
 vector.draw(context);
 

@@ -17,19 +17,59 @@
   
   <script>
     window.onload = function() {
+    
+    function angleincrement (a, inc) {
+        a = a + inc;
+        if (a > 360)
+          {a = a - 360}
+        return a;
+    } 
+    
       var canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
         x0 = canvas.width / 2,
         y0 = canvas.height / 2;
           
       context.translate(x0, y0);
-      coordgrids(context);
-      var l = 100,
-          color = "#000000";
+//      coordgrids(context);
+      var l = 0,
+          color = "#000000",
+          ax = 0,
+          ay = 0,
+          az = 0;
+
+      (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(-x0, -y0, canvas.width, canvas.height);
+
+      l = 50;
+      ax=angleincrement ( ax, 1);
+      ay=angleincrement ( ay, 2);
+      az=angleincrement ( az, 3);
+
       p = new Point (0, 0, 0);
-       
       cube = new Cube(p, l);
+      cube.rotate(ax, ay, az)
       cube.draw(context);      
+
+      l = 20;
+      p = new Point (150, 0, 0);
+      cube = new Cube(p, l);
+      cube.rotate(ax, 0, 0)
+      cube.draw(context);      
+
+      p = new Point (0, 150, 0);
+      cube = new Cube(p, l);
+      cube.rotate(0, ay, 0)
+      cube.draw(context);      
+
+      p = new Point (0, 0, 150);
+      cube = new Cube(p, l);
+      cube.rotate(0, 0, az)
+      cube.draw(context);      
+
+      }());
+
 
     }
   </script>
