@@ -44,17 +44,17 @@
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(-x0, -y0, canvas.width, canvas.height);
           
-      this.cubeBig.rotate(ax, ay, az);
-      this.cubeBig.draw(context);      
+      cubeBig.rotate(ax, ay, az);
+      cubeBig.draw(context);      
 
-      this.cubeX.rotate(ax, 0, 0);
-      this.cubeX.draw(context);      
+      cubeX.rotate(ax, 0, 0);
+      cubeX.draw(context);      
 
-      this.cubeY.rotate(0, ay, 0);
-      this.cubeY.draw(context);      
+      cubeY.rotate(0, ay, 0);
+      cubeY.draw(context);      
 
-      this.cubeZ.rotate(0, 0, az);
-      this.cubeZ.draw(context);      
+      cubeZ.rotate(0, 0, az);
+      cubeZ.draw(context);      
 
       }());
 
