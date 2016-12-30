@@ -31,17 +31,16 @@ this.pointD2 = new Point(x1, y1, z2);
     
 }
 
-Cube.prototype.rotate = function(ax, ay, az)
+Cube.prototype.rotate = function(center, ax, ay, az)
 {
-this.pointA1.rotate(ax, ay, az);
-this.pointA2.rotate(ax, ay, az);
-this.pointB1.rotate(ax, ay, az);
-this.pointB2.rotate(ax, ay, az);
-this.pointC1.rotate(ax, ay, az);
-this.pointC2.rotate(ax, ay, az);
-this.pointD1.rotate(ax, ay, az);
-this.pointD2.rotate(ax, ay, az);
-
+this.pointA1.rotate(center, ax, ay, az);
+this.pointA2.rotate(center, ax, ay, az);
+this.pointB1.rotate(center, ax, ay, az);
+this.pointB2.rotate(center, ax, ay, az);
+this.pointC1.rotate(center, ax, ay, az);
+this.pointC2.rotate(center, ax, ay, az);
+this.pointD1.rotate(center, ax, ay, az);
+this.pointD2.rotate(center, ax, ay, az);
 }
 
 Cube.prototype.draw = function(context)

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Cube</title>
+  <title>Cube1</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,6 +14,7 @@
   <script src="Point.js"></script>
   <script src="Vector.js"></script>
   <script src="Cube.js"></script>
+  <script src="Dot.js"></script>
   
   <script>
     window.onload = function() {
@@ -26,23 +27,12 @@
       context.translate(x0, y0);
 //      coordgrids(context);
       var l = 0,
-          ax = 1,
-          ay = 2,
-          az = 3;
-      cBig = new Point (-50, -50, -50)    
+          ax=1,
+          ay=5,
+          az=3;
+      cBig = new Point (-50, 20, 40)    
       cubeBig = new Cube(cBig, 50);
           
-      cx = new Point (150, 0, 0);
-      cubeX = new Cube(cx, 20);
-      cubeX.color = "#FF0000";
-      
-      cy = new Point (0, 150, 0);
-      cubeY = new Cube(cy, 20);
-      cubeY.color = "#00FF00";
-
-      cz = new Point (0, 0, 150);
-      cubeZ = new Cube(cz, 20);
-      cubeZ.color = "#0000FF";
       
       (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
@@ -51,14 +41,6 @@
       cubeBig.rotate(cBig, ax, ay, az);
       cubeBig.draw(context);      
 
-      cubeX.rotate(cx, ax, 0, 0);
-      cubeX.draw(context);      
-
-      cubeY.rotate(cy, 0, ay, 0);
-      cubeY.draw(context);      
-
-      cubeZ.rotate(cz, 0, 0, az);
-      cubeZ.draw(context);      
 
       }());
 

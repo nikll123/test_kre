@@ -60,9 +60,10 @@
       }
 
       p = new Point(80, 80, 0);
+      c = new Point (0, 0, 0);
       for (a = 0; a<=360; a = a + step)
       {
-        p.rotate(0, 0, step);
+        p.rotate(c, 0, 0, step);
         dot = new Dot(p, radius);
         dot.color = "#FF0000";
         dot.draw(context);

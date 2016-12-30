@@ -26,48 +26,47 @@ Point.prototype.y2d = function()
   return get2d(this.y, this.z, 1);
 }
 
-function rotate(a)
+
+Point.prototype.rotate = function (center, ax, ay, az)  // центр вращения и углы в градусах
 {
-  var res2d = val;
-  if (z != 0)
+  var a = 0,
+      l = 0,
+      dx = 0,
+      dy = 0,
+      dz = 0;
+  k = Math.PI / 180;
+
+  dy = this.y - center.y;
+  dz = this.z - center.z;
+  if ((ax != 0) && ((dy != 0) || (dz != 0)))  // вращение вокруг оси Ox } 
   {
-    res2d  = res2d + sign * z * Math.cos(Math.PI/4) * 0.6;
-  }
-  return res2d;
-}
-
-
-Point.prototype.rotate = function (ax, ay, az)  // углы в градусах
-{
-    var a = 0,
-        l = 0;
-        k = Math.PI / 180;
-
-  if ((ax != 0) && ((this.y != 0) || (this.z != 0)))  // вращение вокруг оси Ox } 
-  {
-    a = Math.atan2(this.y, this.z);
-    l = Math.sqrt(Math.pow(this.y, 2) + Math.pow(this.z, 2));
-    a = a +  k * ax;
-    this.z = l * Math.cos(a);
-    this.y = l * Math.sin(a);
+    a = Math.atan2(dy, dz);
+    l = Math.sqrt(Math.pow(dy, 2) + Math.pow(dz, 2));
+    a += k * ax;
+    this.z = center.z + l * Math.cos(a);
+    this.y = center.y + l * Math.sin(a);
   }
   
-  if ((ay != 0) && ((this.x != 0) || (this.z != 0)))  // вращение вокруг оси Oy }
+  dx = this.x - center.x;
+  dz = this.z - center.z;
+  if ((ay != 0) && ((dx != 0) || (dz != 0)))  // вращение вокруг оси Oy }
   {
-    a = Math.atan2(this.z, this.x);
-    l = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.z, 2));
-    a = a +  k * ay;
-    this.x = l * Math.cos(a);
-    this.z = l * Math.sin(a);
+    a = Math.atan2(dz, dx);
+    l = Math.sqrt(Math.pow(dx, 2) + Math.pow(dz, 2));
+    a += k * ay;
+    this.x = center.x + l * Math.cos(a);
+    this.z = center.z + l * Math.sin(a);
   }
   
-  if ((az != 0) && ((this.x != 0) || (this.y != 0)))  // вращение вокруг оси Оz } 
+  dx = this.x - center.x;
+  dy = this.y - center.y;
+  if ((az != 0) && ((dx != 0) || (dy != 0)))  // вращение вокруг оси Оz } 
   {
-    a = Math.atan2(this.y, this.x);
-    l = Math.sqrt(Math.pow(this.y, 2) + Math.pow(this.x, 2));
-    a = a +  k * az;
-    this.x = l * Math.cos(a);
-    this.y = l * Math.sin(a);
+    a = Math.atan2(dy, dx);
+    l = Math.sqrt(Math.pow(dy, 2) + Math.pow(dx, 2));
+    a += k * az;
+    this.x = center.x + l * Math.cos(a);
+    this.y = center.y + l * Math.sin(a);
   }
 
 }

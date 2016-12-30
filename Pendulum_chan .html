@@ -33,16 +33,19 @@
 
       p = new Point (0, -200, 0);
       pendulum = new Pendulum(p, lengthPendulumValue, 30);
-      var i = 1;
+      var i = 1,
+        phase = 0;
 
       (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(-x0, -y0, canvas.width, canvas.height);
-
-        pendulum.draw(context, i);
-        i = i + 3;
-        if (i > 360)
-          {i = i - 360}
+        
+        phase = phase + 3;
+        if (phase > 360)
+          {phase = phase - 360}
+        angle = Math.PI / 10 * Math.sin((2 * Math.PI / 360) * phase);
+        pendulum.setAngle(angle);
+        pendulum.draw(context);
       }());
 
 
