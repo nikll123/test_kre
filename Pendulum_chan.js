@@ -20,10 +20,10 @@ Pendulum.prototype.draw = function(context)
       ay = 0, //(Math.atan((this.pointFree.z - this.pointFixed.z) / this.length)) * 180 / Math.PI;
       az = (Math.acos((this.pointFree.x - this.pointFixed.x) / this.length)) * 180 / Math.PI; //- Math.PI / 2; 
       
-  centerCube = new Point(this.pointFree.x, this.pointFree.y, this.pointFree.z);
+  //centerCube = new Point(this.pointFree.x, this.pointFree.y, this.pointFree.z);
   //centerCube = new Point(0, 0, 0);
-  cube = new Cube (centerCube, this.plummetSize);
-  cube.rotate(az, 0, 0);
+  cube = new Cube (this.pointFree, this.plummetSize);
+  cube.rotate(this.pointFree, 0, 0, az);
   cube.draw(context);
   
   //console.log (pointMoveable.x, pointMoveable.y);
