@@ -40,36 +40,28 @@
       }
       
       radius = 2;
+      c = new Point (0, 0, 0);
       
-      p = new Point(100, -50, 50);
+      px = new Point(100, -50, 50);
+      py = new Point(0, 60, 60);
+      pz = new Point(80, 80, 0);
       for (a = 0; a<=360; a = a + step)
       {
-        p.rotate(step, 0, 0);
-        dot = new Dot(p, radius);
+        px.rotate(c, step, 0, 0);
+        dot = new Dot(px, radius);
         dot.color = "#00FF00";
         dot.draw(context);
-      }
 
-      p = new Point(0, 60, 60);
-      for (a = 0; a<=360; a = a + step)
-      {
-        p.rotate(0, step, 0);
-        dot = new Dot(p, radius);
+        py.rotate(c, 0, step, 0);
+        dot = new Dot(py, radius);
         dot.color = "#0000FF";
         dot.draw(context);
-      }
 
-      p = new Point(80, 80, 0);
-      c = new Point (0, 0, 0);
-      for (a = 0; a<=360; a = a + step)
-      {
-        p.rotate(c, 0, 0, step);
-        dot = new Dot(p, radius);
+        pz.rotate(c, 0, 0, step);
+        dot = new Dot(pz, radius);
         dot.color = "#FF0000";
         dot.draw(context);
       }
-
-
 
     }
   </script>

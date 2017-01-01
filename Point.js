@@ -3,7 +3,7 @@ function Point(x, y, z)
   this.x = x;
   this.y = y;
   this.z = z;
-  this.Radius = 1;
+  
 }
 
 function get2d(val, z, sign)
