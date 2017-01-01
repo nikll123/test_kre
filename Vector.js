@@ -17,6 +17,42 @@ context.stroke();
 
 }
 
+
+Vector.prototype.draw2 = function(context)
+{
+this.draw(context);
+var dx = this.end.x2d() - this.begin.x2d(),
+    dy = this.end.y2d() - this.begin.y2d(),
+    a =  Math.atan2(dy, dx),
+    da = 15 * Math.PI / 180,
+    xd21 = this.end.x2d(),
+    yd21 = this.end.y2d(); 
+    drawWing(context, (a - da), xd21, yd21);
+    drawWing(context, (a + da), xd21, yd21);
+
+}
+
+
+Vector.prototype.rotate = function(center, ax, ay, az)
+{
+this.begin.rotate(center, ax, ay, az);
+this.end.rotate(center, ax, ay, az);
+}
+
+drawWing = function (context, a, x0, y0)
+{
+  var l = 10,
+   
+    x = (- l * Math.cos(a)) + x0,
+    y = (- l * Math.sin(a)) + y0;
+  context.beginPath();
+  context.strokeStyle = this.color;
+  context.moveTo(x0, y0);
+  context.lineTo(x, y);
+  context.stroke();
+}
+
+
 function coordgrids(context)
 {
       var color = "#000000";

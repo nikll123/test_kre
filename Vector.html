@@ -22,7 +22,30 @@
         y0 = canvas.height / 2;
           
       context.translate(x0, y0);
-      coordgrids(context);
+      // coordgrids(context);
+      center = new Point(0, 0, 0);
+
+      vx = new Vector(new Point(0, 0, 0), new Point(100, 100, 100));
+      vx.draw2(context)
+       
+      vx = new Vector(new Point(-100,-50,0), new Point(100,-50,0));
+      vx.color = '#FF0000';
+
+      vy = new Vector(new Point(0, -100, 100), new Point(0, -100, -100));
+      vy.color = '#00FF00';
+
+      vz = new Vector(new Point(-100, 0, 100), new Point(100, 0, 100));
+      vz.color = '#0000FF';
+      for (a = 0; a < 360; a = a + 20)
+      {
+        vx.rotate (center, 20, 0, 0)
+        vx.draw2(context);
+         
+        vy.rotate (vy.end, 0, 20, 0)
+        vy.draw2(context); 
+        vz.rotate (center, 0, 0, 20)
+        vz.draw2(context); 
+      }
     }
   </script>
 </body>
