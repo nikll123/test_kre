@@ -50,6 +50,7 @@ vector = new Vector (this.pointA1, this.pointB1);
 vector.color = this.color;
 vector.draw(context);
 
+
 vector = new Vector (this.pointB1, this.pointC1);
 vector.color = this.color;
 vector.draw(context);
@@ -97,4 +98,13 @@ vector.color = this.color;
 vector.draw(context);
 
 };
+
+Cube.prototype.draw2 = function(context)
+{
+  this.draw(context);
+  vector = new Vector (this.pointA1, this.pointB1);
+  vector.color = this.color;
+  vector.draw2(context);
+  
+}
 
