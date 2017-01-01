@@ -28,14 +28,23 @@
 
       p = new Point (0, -100, 0);
       pendulum = new Pendulum(p, 200, 30);
-      var i = 1,
-        phase = 0;
+      var phase = 0;
 
         pendulum.draw(context);
 
-        pendulum.setAngle(10);
-        pendulum.draw(context);
+      (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(-x0, -y0, canvas.width, canvas.height);
 
+        if (phase >= 360)
+          {phase = phase - 360}
+        a1 = phase * Math.PI / 180;
+        angle = 20 * Math.sin(a1);
+        pendulum.setAngle(angle);
+        //pendulum.plummet.rotate(pendulum.plummet.center, 0, phase, 0);
+        pendulum.draw(context);
+        phase = phase + 3;
+      }());
 
     }
   </script>

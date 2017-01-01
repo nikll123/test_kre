@@ -1,34 +1,35 @@
 function Cube(point, edge)
 {
-  this.x = point.x;
-  this.y = point.y;
-  this.z = point.z;
+  this.center = point;
   this.color = "#000000";
   this.sidelenght = edge;
+  this.build();  
+}
 
-var edgehalf = this.sidelenght / 2,  
-    x1 = this.x - edgehalf,  
-    y1 = this.y - edgehalf,  
-    z1 = this.z + edgehalf,   
-    z2 = this.z - edgehalf;
-this.pointA1 = new Point(x1, y1, z1);
-this.pointA2 = new Point(x1, y1, z2);
-
-var x1 = this.x + edgehalf,  
-    y1 = this.y - edgehalf;  
-this.pointB1 = new Point(x1, y1, z1);
-this.pointB2 = new Point(x1, y1, z2);
-
-var x1 = this.x + edgehalf,  
-    y1 = this.y + edgehalf;  
-this.pointC1 = new Point(x1, y1, z1);
-this.pointC2 = new Point(x1, y1, z2);
-
-var x1 = this.x - edgehalf,  
-    y1 = this.y + edgehalf;  
-this.pointD1 = new Point(x1, y1, z1);
-this.pointD2 = new Point(x1, y1, z2);
-    
+Cube.prototype.build = function()
+{
+  var edgehalf = this.sidelenght / 2,  
+      x1 = this.center.x - edgehalf,  
+      y1 = this.center.y - edgehalf,  
+      z1 = this.center.z + edgehalf,   
+      z2 = this.center.z - edgehalf;
+  this.pointA1 = new Point(x1, y1, z1);
+  this.pointA2 = new Point(x1, y1, z2);
+  
+  var x1 = this.center.x + edgehalf,  
+      y1 = this.center.y - edgehalf;  
+  this.pointB1 = new Point(x1, y1, z1);
+  this.pointB2 = new Point(x1, y1, z2);
+  
+  var x1 = this.center.x + edgehalf,  
+      y1 = this.center.y + edgehalf;  
+  this.pointC1 = new Point(x1, y1, z1);
+  this.pointC2 = new Point(x1, y1, z2);
+  
+  var x1 = this.center.x - edgehalf,  
+      y1 = this.center.y + edgehalf;  
+  this.pointD1 = new Point(x1, y1, z1);
+  this.pointD2 = new Point(x1, y1, z2);
 }
 
 Cube.prototype.rotate = function(center, ax, ay, az)
