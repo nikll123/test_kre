@@ -1,14 +1,11 @@
 function Pendulum(point, length, plummetSize)
 {
-  this.pointFixed = new Point(point.x, point.y, 0);
-  this.pointFree = new Point(0, 0, 0);
-//  this.x = point.x;
-//  this.y = point.y;
+  this.pointFixed = point;
+  this.pointFree = new Point(point.x, point.y + length, point.z);
   this.angle = 0;
   this.color = "#000000";
   this.length = length;
-  this.plummetSize = plummetSize;
-  this.setAngle(0);    
+  this.plummet = new Cube (this.pointFree, plummetSize);
 }
 
 Pendulum.prototype.draw = function(context)
@@ -16,15 +13,7 @@ Pendulum.prototype.draw = function(context)
   vector = new Vector (this.pointFixed, this.pointFree);
   vector.color = this.color;
   vector.draw(context);
-  var ax = 0, //(Math.acos((this.pointFree.x - this.pointFixed.x) / this.length)) * 180 / Math.PI, 
-      ay = 0, //(Math.atan((this.pointFree.z - this.pointFixed.z) / this.length)) * 180 / Math.PI;
-      az = (Math.acos((this.pointFree.x - this.pointFixed.x) / this.length)) * 180 / Math.PI; //- Math.PI / 2; 
-      
-  //centerCube = new Point(this.pointFree.x, this.pointFree.y, this.pointFree.z);
-  //centerCube = new Point(0, 0, 0);
-  cube = new Cube (this.pointFree, this.plummetSize);
-  cube.rotate(this.pointFree, 0, 0, az);
-  cube.draw(context);
+  this.plummet.draw2(context);
   
   //console.log (pointMoveable.x, pointMoveable.y);
 };
@@ -33,11 +22,16 @@ Pendulum.prototype.draw = function(context)
 Pendulum.prototype.setAngle = function(angle)
 {
  
-  this.angle = angle;
+  this.angle = angle * Math.PI / 180;
 
   var x1 = this.pointFixed.x + this.length * Math.sin(this.angle),
       y1 = this.pointFixed.y + this.length * Math.cos(this.angle); 
-  this.pointFree = new Point(x1, y1, 0);
+  this.pointFree = new Point(x1, y1, this.pointFree.z);
+  var ax = 0,  
+      ay = 0, 
+      az = (Math.acos((this.pointFree.x - this.pointFixed.x) / this.length)) * 180 / Math.PI;  
+      
+  this.plummet.rotate(this.pointFree, 0, 0, az);
     
 };
 

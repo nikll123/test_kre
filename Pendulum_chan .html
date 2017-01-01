@@ -13,6 +13,7 @@
   <script src="Point.js"></script>
   <script src="Vector.js"></script>
   <script src="Cube.js"></script>
+  <script src="Dot.js"></script>
   <script src="Pendulum_chan.js"></script>
   
   <script>
@@ -24,70 +25,20 @@
         x0 = canvas.width / 2,
         y0 = canvas.height / 2;
       context.translate(x0, y0);
-      
-      // Установка первоначальной длины маятника
-      var lengthPendulum = document.getElementById("lengthPendulum");
-      var lengthPendulumValue = lengthPendulum.value;
-      console.log('Первоначально установленная длина маятника: ' + lengthPendulumValue);
 
-
-      p = new Point (0, -200, 0);
-      pendulum = new Pendulum(p, lengthPendulumValue, 30);
+      p = new Point (0, -100, 0);
+      pendulum = new Pendulum(p, 200, 30);
       var i = 1,
         phase = 0;
 
-      (function drawFrame() {
-        window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(-x0, -y0, canvas.width, canvas.height);
-        
-        phase = phase + 3;
-        if (phase > 360)
-          {phase = phase - 360}
-        angle = Math.PI / 10 * Math.sin((2 * Math.PI / 360) * phase);
-        pendulum.setAngle(angle);
         pendulum.draw(context);
-      }());
 
-
-      
-      // Установка события на изменение длины маятника
-      function selectLengthPendulum()
-      {
-        pendulum.length = lengthPendulum.value;
-        console.log('Изменённая длина маятника: ' + lengthPendulum.value);
-      }
-      lengthPendulum.addEventListener('change', selectLengthPendulum, false );
-
-      // Установка длины маятника через ползунок
-      var input = document.getElementById('lengthPendulum2');
-      
-      function selectLengthPendulum2()
-      {
-        pendulum.length = input.value;
-        console.log('Изменённая длина маятника: ' + input.value);
-      }
-      
-      input.addEventListener('change', selectLengthPendulum2, false);
+        pendulum.setAngle(10);
+        pendulum.draw(context);
 
 
     }
   </script>
-
-  <form>
-    <label for="lengthPendulum" > Выберите длину маятника: </label>
-    <select id="lengthPendulum" >
-      <option value="100">100px</option>
-      <option value="200"  selected="selected">200px</option>
-      <option value="300">300px</option>
-    </select>
-  </form>
-  <hr />
-  <form>
-  <p>Изменение длины маятника ( в pixel ) от 50 до 400 с шагом i=50 </p>
-  <p>
-    <input id="lengthPendulum2" type="range" min="50" max="400" step="50">
-  </p>
-  </form>
 
 </body>
 
