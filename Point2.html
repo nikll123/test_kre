@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Point</title>
+  <title>Point2</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,6 +13,7 @@
 
   <script src="Point.js"></script>
   <script src="Dot.js"></script>
+  <script src="Vector.js"></script>
   <script>
   
        function dotdraw(context, x, y, z, radius) { 
@@ -23,7 +24,7 @@
         
     window.onload = function() {
       //Our code here...
-      var canvas = document.getElementById("canvas"),
+    var canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
         x0 = canvas.width / 2,
         y0 = canvas.height / 2,
@@ -40,8 +41,24 @@
       }
       
       radius = 2;
-      c = new Point (0, 0, 0);
-      
+      p1 = new Point (0, 0, 0);
+      p2 = new Point (100, 100, 100);
+      s1 = new Vector(p1, p2);
+      s1.draw2(context);
+
+      p = new Point(50, 80, 80);
+      d = new Dot(p, 3);
+      d.draw(context);
+
+      s2 = new Vector(p, p1);
+      s2.draw2(context);
+
+      s3 = new Vector(p, p2);
+      s3.draw2(context);
+
+smax
+
+/*      
       px = new Point(100, -50, 50);
       py = new Point(0, 60, 60);
       pz = new Point(80, 80, 0);
@@ -62,8 +79,8 @@
         dot = new Dot(pz, radius);
         dot.color = "#FF0000";
         dot.draw(context);
-
       }
+*/
 
     }
   </script>

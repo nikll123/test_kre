@@ -2,7 +2,12 @@ function Vector(point1, point2)
 {
   this.begin = point1;
   this.end = point2;
-  this.color = "#000000"; 
+  this.color = "#000000";
+  var dx = this.end.x - this.begin.x,
+      dy = this.end.y - this.begin.y,
+      dz = this.end.z - this.begin.z;
+  xy = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+  this.length = Math.sqrt(Math.pow(xy, 2) + Math.pow(dz, 2));
 }
 
 Vector.prototype.draw = function(context)

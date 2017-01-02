@@ -77,3 +77,9 @@ Point.prototype.move = function (dx, dy, dz)  // центр вращения и 
   this.y = this.y + dy;  
   this.z = this.z + dz;  
 }
+
+
+Point.prototype.rotate2 = function (axis, angle)  // ось вращения (вектор) и угол в градусах
+{
+
+}
