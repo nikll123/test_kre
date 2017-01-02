@@ -41,8 +41,8 @@
         a1 = phase * Math.PI / 180;
         angle = 20 * Math.sin(a1);
         pendulum.setAngle(angle);
-        //pendulum.plummet.rotate(pendulum.plummet.center, 0, phase, 0);
-        pendulum.draw(context);
+        pendulum.plummet.rotate(pendulum.plummet.center, phase, phase, phase);
+        pendulum.draw2(context);
         phase = phase + 3;
       }());
 

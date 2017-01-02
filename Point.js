@@ -70,3 +70,10 @@ Point.prototype.rotate = function (center, ax, ay, az)  // центр враще
   }
 
 }
+
+Point.prototype.move = function (dx, dy, dz)  // центр вращения и углы в градусах
+{
+  this.x = this.x + dx;  
+  this.y = this.y + dy;  
+  this.z = this.z + dz;  
+}

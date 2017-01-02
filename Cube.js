@@ -3,6 +3,7 @@ function Cube(point, edge)
   this.center = point;
   this.color = "#000000";
   this.sidelenght = edge;
+  this.center = point;
   this.build();  
 }
 
@@ -32,16 +33,32 @@ Cube.prototype.build = function()
   this.pointD2 = new Point(x1, y1, z2);
 }
 
+Cube.prototype.move = function(point)
+{
+  var dx = this.center.x - point.x,
+      dy = this.center.y - point.y,
+      dz = this.center.z - point.z;
+  this.center.move(dx, dy, dz);
+  this.pointA1.move(dx, dy, dz);
+  this.pointA2.move(dx, dy, dz);
+  this.pointB1.move(dx, dy, dz);
+  this.pointB2.move(dx, dy, dz);
+  this.pointC1.move(dx, dy, dz);
+  this.pointC2.move(dx, dy, dz);
+  this.pointD1.move(dx, dy, dz);
+  this.pointD2.move(dx, dy, dz);
+}
+
 Cube.prototype.rotate = function(center, ax, ay, az)
 {
-this.pointA1.rotate(center, ax, ay, az);
-this.pointA2.rotate(center, ax, ay, az);
-this.pointB1.rotate(center, ax, ay, az);
-this.pointB2.rotate(center, ax, ay, az);
-this.pointC1.rotate(center, ax, ay, az);
-this.pointC2.rotate(center, ax, ay, az);
-this.pointD1.rotate(center, ax, ay, az);
-this.pointD2.rotate(center, ax, ay, az);
+  this.pointA1.rotate(center, ax, ay, az);
+  this.pointA2.rotate(center, ax, ay, az);
+  this.pointB1.rotate(center, ax, ay, az);
+  this.pointB2.rotate(center, ax, ay, az);
+  this.pointC1.rotate(center, ax, ay, az);
+  this.pointC2.rotate(center, ax, ay, az);
+  this.pointD1.rotate(center, ax, ay, az);
+  this.pointD2.rotate(center, ax, ay, az);
 }
 
 Cube.prototype.draw = function(context)

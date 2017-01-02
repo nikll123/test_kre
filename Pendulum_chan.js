@@ -38,8 +38,7 @@ Pendulum.prototype.setAngle = function(angle)
       y1 = this.pointFixed.y + this.length * Math.cos(this.angle); 
   this.pointFree.x = x1;
   this.pointFree.y = y1;
-  this.plummet.build(); 
-      
+  this.plummet.build();
   this.plummet.rotate(this.pointFree, 0, 0, -angle);
     
 };
