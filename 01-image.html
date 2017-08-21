@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+ <head>
+	 <meta charset="utf-8">
+	 <title>Вывод картинки на Canvas</title>
+	 <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+	 <canvas id="canvas" width="400" height="400"></canvas>
+	 <script src="utils.js"></script>
+	 <script src="ball.js"></script>
+	 <script>
+		window.onload = function () {
+			var canvas = document.getElementById('canvas'),
+			context = canvas.getContext('2d');
+			
+
+			var img = new Image();
+			img.onload = function() 
+			{
+				context.drawImage(img, 0, 0, 400, 400);
+
+			// рисуем маcштабируемую картинку и вставляем её слева внизу	
+			var sourceX = 0,
+				sourceY = 0,
+				sourceWidth = 276,
+				sourceHeight = 291,
+				destX = 0,
+				destY = 200,
+				destWidth = 200,
+				destHeight = 200;
+
+			context.drawImage(img, sourceX, sourceY, sourceWidth,	sourceHeight, destX, destY, destWidth, destHeight);
+
+			// вырезаем часть изображения и вставляем по центру вверху
+			var greenLableSourceX = 173,
+				greenLableSourceY = 160,
+				greenLableSourceWidth = 92,
+				greenLableSourceHeight = 40,
+				greenLableDestX = 150,
+				greenLableDestY = 10,
+				greenLableDestWidth = 132,
+				greenLableDestHeight = 50;
+
+			context.drawImage(img, greenLableSourceX, greenLableSourceY, greenLableSourceWidth,	greenLableSourceHeight, greenLableDestX, greenLableDestY, greenLableDestWidth, greenLableDestHeight);
+
+			}
+
+			img.src = 'http://www.provisor.com.ua/archive/2008/N13/img/viktor_138r1.jpg';
+
+			
+
+
+		};
+	 </script>
+	 </body>
+</html> 

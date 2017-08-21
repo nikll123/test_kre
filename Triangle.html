@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Triangle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="canvas" width="400" height="400">
+       </canvas>
+
+  <script src="Point.js"></script>
+  <script src="Vector.js"></script>
+  <script src="Triangle.js"></script>
+  
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById("canvas"),
+        context = canvas.getContext("2d"),
+        x0 = canvas.width / 2,
+        y0 = canvas.height / 2;
+          
+      context.translate(x0, y0);
+      // coordgrids(context);
+      center = new Point(0, 0, 0);
+
+      A = new Point(0, 0, 0);
+      B = new Point(0, 100, 0);
+      C = new Point(0, 0, 100);
+      t = new Triangle(A, B, C);
+      t.draw2(context);
+
+
+      B = new Point(100, 0, 0);
+      C = new Point(0, 0, 100);
+      t = new Triangle(A, B, C);
+      t.draw2(context);
+
+      B = new Point(100, 0, 0);
+      C = new Point(0, 100, 0);
+      t = new Triangle(A, B, C);
+      t.draw2(context);
+       
+    }
+  </script>
+</body>
+
+</html>

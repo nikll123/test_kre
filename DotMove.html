@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Dot Move</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="canvas" width="400" height="400">
+       </canvas>
+
+  <script src="Point.js"></script>
+  <script src="Dot.js"></script>
+  <script src="Vector.js"></script>
+  
+  <script>
+    window.onload = function() {
+      
+      var canvas = document.getElementById("canvas"),
+        context = canvas.getContext("2d"),
+        x0 = canvas.width / 2,
+        y0 = canvas.height / 2;
+
+      context.translate(x0, y0);
+      coordgrids(context);
+
+      cx = new Point(50, 0, 0);
+      dotCx = new Dot (cx, 2);
+      dotCx.draw(context);
+      mx = new Point(50, 20, 0);
+      dotMx = new Dot (mx, 2);
+      dotMx.color = '#00FF00';
+      
+      cy = new Point(0, 100, 0);
+      dotCy = new Dot (cy, 2);
+      dotCy.draw(context);
+      my = new Point(0, 100, 30);
+      dotMy = new Dot (my, 2);
+      dotMy.color = '#FF0000';
+
+      cz = new Point(0, 0, 50);
+      dotCz = new Dot (cz, 2);
+      dotCz.draw(context);
+      mz = new Point(0, 40, 50);
+      dotMz = new Dot (mz, 2);
+      dotMz.color = '#0000FF';
+
+      for (i = 0; i<360; i = i + 15)
+      {
+        mx.rotate(cx, 15, 0, 0);
+        dotMx.draw(context);
+
+        my.rotate(cy, 0, 15, 0);
+        dotMy.draw(context);
+
+        mz.rotate(cz, 0, 0, 15);
+        dotMz.draw(context);
+
+      }
+
+    }
+  </script>
+</body>
+
+</html>
